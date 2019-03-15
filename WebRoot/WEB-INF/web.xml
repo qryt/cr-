@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+ <servlet>
+  <servlet-name>dispatcherServlet</servlet-name>
+  <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+ <init-param>
+ <param-name>contextConfigLocation</param-name>
+ <param-value>/WEB-INF/applicationContext.xml,/WEB-INF/controller_config.xml</param-value>
+ </init-param>
+ <load-on-startup>1</load-on-startup> 
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ShowXh</servlet-name>
+    <servlet-class>com.cr.servlet.ShowXh</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Printgjd</servlet-name>
+    <servlet-class>com.cr.servlet.Printgjd</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>printbb</servlet-name>
+    <servlet-class>com.cr.servlet.Printbb</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>expdf</servlet-name>
+    <servlet-class>com.cr.servlet.Expdf</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>printqtbb</servlet-name>
+    <servlet-class>com.cr.servlet.Printqtbb</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>printxlfl</servlet-name>
+    <servlet-class>com.cr.servlet.PrintXlfl</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>printxlfl2</servlet-name>
+    <servlet-class>com.cr.servlet.PrintXlfl2</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>expdfs</servlet-name>
+    <servlet-class>com.cr.servlet.Expdfs</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>getDcf</servlet-name>
+    <servlet-class>com.cr.servlet.GetDcf</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>showpl</servlet-name>
+    <servlet-class>com.cr.servlet.Showpl</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>showxlfl2</servlet-name>
+    <servlet-class>com.cr.servlet.Showxlfl2</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>showxlfl</servlet-name>
+    <servlet-class>com.cr.servlet.Showxlfl</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>exMskEDI</servlet-name>
+    <servlet-class>com.cr.servlet.ExMskEDI</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>delJcdj</servlet-name>
+    <servlet-class>com.cr.servlet.DelJcdj</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>showJc</servlet-name>
+    <servlet-class>com.cr.servlet.ShowJc</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>showGjd</servlet-name>
+    <servlet-class>com.cr.servlet.ShowGjd</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>showGs</servlet-name>
+    <servlet-class>com.cr.servlet.ShowGs</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>exSitcEDI</servlet-name>
+    <servlet-class>com.cr.servlet.ExSitcEDI</servlet-class>
+  </servlet>
+      <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>exOoclEDI</servlet-name>
+    <servlet-class>com.cr.servlet.ExOoclEDI</servlet-class>
+  </servlet>
+  
+     <servlet>
+      <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>exCscoEDI</servlet-name>
+    <servlet-class>com.cr.servlet.ExCscoEDI</servlet-class>
+  </servlet>
+  
+       <servlet>
+      <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>exCmaEDI</servlet-name>
+    <servlet-class>com.cr.servlet.ExCmaEDI</servlet-class>
+  </servlet>
+  
+         <servlet>
+      <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>exSunEDI</servlet-name>
+    <servlet-class>com.cr.servlet.ExSunEDI</servlet-class>
+  </servlet>
+  
+           <servlet>
+      <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>exCosEDI</servlet-name>
+    <servlet-class>com.cr.servlet.ExCosEDI</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Printtdbb</servlet-name>
+    <servlet-class>com.cr.servlet.Printtdbb</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <context-param> 
+   <param-name> webAppRootKey </param-name> 
+   <param-value > cr.root </param-value> 
+  </context-param > 
+  <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>/WEB-INF/logConfig.properties</param-value>
+    </context-param>
+
+    <!--Spring默认刷新Log4j配置文件的间隔,单位为millisecond -->
+    <context-param>
+        <param-name>log4jRefreshInterval</param-name>
+        <param-value>60000</param-value>
+    </context-param>
+   
+  <listener>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
+    <listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+ <servlet-mapping>  
+       <servlet-name>dispatcherServlet</servlet-name>  
+       <url-pattern>*.htm</url-pattern>  
+   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShowXh</servlet-name>
+    <url-pattern>/servlet/ShowXh</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Printgjd</servlet-name>
+    <url-pattern>/servlet/Printgjd</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>printbb</servlet-name>
+    <url-pattern>/servlet/printbb</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>expdf</servlet-name>
+    <url-pattern>/servlet/expdf</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>printqtbb</servlet-name>
+    <url-pattern>/servlet/printqtbb</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>printxlfl</servlet-name>
+    <url-pattern>/servlet/printxlfl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>printxlfl2</servlet-name>
+    <url-pattern>/servlet/printxlfl2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>expdfs</servlet-name>
+    <url-pattern>/servlet/expdfs</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>getDcf</servlet-name>
+    <url-pattern>/servlet/getDcf</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>showpl</servlet-name>
+    <url-pattern>/servlet/showpl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>showxlfl2</servlet-name>
+    <url-pattern>/servlet/showxlfl2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>showxlfl</servlet-name>
+    <url-pattern>/servlet/showxlfl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>exMskEDI</servlet-name>
+    <url-pattern>/servlet/exMskEDI</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>delJcdj</servlet-name>
+    <url-pattern>/servlet/delJcdj</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>showJc</servlet-name>
+    <url-pattern>/servlet/showJc</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>showGjd</servlet-name>
+    <url-pattern>/servlet/showGjd</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>showGs</servlet-name>
+    <url-pattern>/servlet/showGs</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>exSitcEDI</servlet-name>
+    <url-pattern>/servlet/exSitcEDI</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>exOoclEDI</servlet-name>
+    <url-pattern>/servlet/exOoclEDI</url-pattern>
+  </servlet-mapping>
+  
+      <servlet-mapping>
+    <servlet-name>exSunEDI</servlet-name>
+    <url-pattern>/servlet/exSunEDI</url-pattern>
+  </servlet-mapping>
+  
+        <servlet-mapping>
+    <servlet-name>exCosEDI</servlet-name>
+    <url-pattern>/servlet/exCosEDI</url-pattern>
+  </servlet-mapping>
+  
+      <servlet-mapping>
+    <servlet-name>exCmaEDI</servlet-name>
+    <url-pattern>/servlet/exCmaEDI</url-pattern>
+  </servlet-mapping>
+  
+  
+        <servlet-mapping>
+    <servlet-name>exCscoEDI</servlet-name>
+    <url-pattern>/servlet/exCscoEDI</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Printtdbb</servlet-name>
+    <url-pattern>/servlet/Printtdbb</url-pattern>
+  </servlet-mapping>
+   <filter>
+  <filter-name>encodingFilter</filter-name>
+  <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+  <init-param>
+<param-name>encoding</param-name>
+<param-value>UTF-8</param-value>
+</init-param>
+  <init-param>
+<param-name>forceEncoding</param-name>
+<param-value>true</param-value>
+</init-param>
+</filter>
+ <filter-mapping>
+  <filter-name>encodingFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+  </filter-mapping>
+   <filter>
+        <filter-name>acegifilter</filter-name>
+        <filter-class>org.acegisecurity.util.FilterToBeanProxy</filter-class>
+        <init-param>
+            <param-name>targetClass</param-name>
+            <param-value>org.acegisecurity.util.FilterChainProxy</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+      <filter-name>acegifilter</filter-name>
+      <url-pattern>/*</url-pattern>
+    </filter-mapping>
+     <session-config>
+        <session-timeout>300</session-timeout>
+    </session-config>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

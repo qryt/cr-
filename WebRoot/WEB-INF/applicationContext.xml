@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+
+	<bean id="dataSource"
+		class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass"
+			value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/cr?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;jdbcCompliantTruncation=false"></property>
+<property name="user" value="root"></property>
+		<property name="password" value="abcd-1234"></property>
+
+ <!--连接池中保留的最小连接数。-->
+        <property name="minPoolSize">
+            <value>5</value>
+        </property>
+ 
+ <!--连接池中保留的最大连接数。Default: 15 -->
+        <property name="maxPoolSize">
+            <value>30</value>
+        </property>
+ 
+<!--初始化时获取的连接数，取值应在minPoolSize与maxPoolSize之间。Default: 3 -->
+        <property name="initialPoolSize">
+            <value>10</value>
+        </property>
+
+ <!--最大空闲时间,60秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 -->
+        <property name="maxIdleTime">
+            <value>600</value>
+        </property>
+ 
+ <!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
+        <property name="acquireIncrement">
+            <value>5</value>
+        </property>
+ 
+ <!--JDBC的标准参数，用以控制数据源内加载的PreparedStatements数量。但由于预缓存的statements
+  属于单个connection而不是整个连接池。所以设置这个参数需要考虑到多方面的因素。
+  如果maxStatements与maxStatementsPerConnection均为0，则缓存被关闭。Default: 0-->
+        <property name="maxStatements">
+            <value>0</value>
+        </property>
+        <property name="maxStatementsPerConnection"><value>100</value></property> 
+
+        
+ 
+ <!--每60秒检查所有连接池中的空闲连接。Default: 0 -->
+        <property name="idleConnectionTestPeriod">
+            <value>60</value>
+        </property>
+ 
+ <!--定义在从数据库获取新连接失败后重复尝试的次数。Default: 30 -->
+        <property name="acquireRetryAttempts">
+            <value>30</value>
+        </property>
+ 
+ <!--获取连接失败将会引起所有等待连接池来获取连接的线程抛出异常。但是数据源仍有效
+  保留，并在下次调用getConnection()的时候继续尝试获取连接。如果设为true，那么在尝试
+  获取连接失败后该数据源将申明已断开并永久关闭。Default: false-->
+        <property name="breakAfterAcquireFailure">
+            <value>true</value>
+        </property>
+ 
+ <!--因性能消耗大请只在需要的时候使用它。如果设为true那么在每个connection提交的
+  时候都将校验其有效性。建议使用idleConnectionTestPeriod或automaticTestTable
+  等方法来提升连接测试的性能。Default: false -->
+        <property name="testConnectionOnCheckout">
+            <value>false</value>
+        </property>
+		 
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				 <prop key="hibernate.generate_statistics">true</prop>
+                <prop key="hibernate.connection.release_mode">auto</prop>
+                <prop key="hibernate.autoReconnect">true</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/cr/domain/TUser.hbm.xml</value>
+				<value>com/cr/domain/TRole.hbm.xml</value>
+				<value>com/cr/domain/RolePriv.hbm.xml</value>
+				<value>com/cr/domain/UserRole.hbm.xml</value>
+				<value>com/cr/domain/TPrivilege.hbm.xml</value>
+				<value>com/cr/domain/TJcxxx.hbm.xml</value>
+				<value>com/cr/domain/TZcgjd.hbm.xml</value>
+				<value>com/cr/domain/TCgsxx.hbm.xml</value>
+				<value>com/cr/domain/TXxxx.hbm.xml</value>
+				<value>com/cr/domain/TDcfl.hbm.xml</value>
+				<value>com/cr/domain/TXlfl.hbm.xml</value>
+				<value>com/cr/domain/TShlxsz.hbm.xml</value>
+				<value>com/cr/domain/Xlfl2.hbm.xml</value>
+				<value>com/cr/domain/Zcgjd2.hbm.xml</value>
+				<value>com/cr/domain/TFpdc.hbm.xml</value>
+				<value>com/cr/domain/TWzdm.hbm.xml</value>
+				<value>com/cr/domain/TXxl.hbm.xml</value>
+				 
+				<value>com/cr/domain/TData.hbm.xml</value>
+				<value>com/cr/domain/TDataDetail.hbm.xml</value>
+				<value>com/cr/domain/TSum.hbm.xml</value></list>
+		</property></bean>
+	<bean id="TUserDAO" class="com.cr.domain.TUserDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TRoleDAO" class="com.cr.domain.TRoleDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="RolePrivDAO" class="com.cr.domain.RolePrivDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="UserRoleDAO" class="com.cr.domain.UserRoleDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TPrivilegeDAO" class="com.cr.domain.TPrivilegeDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+	<property name="dataSource">
+	<ref local="dataSource"/>
+	</property>
+	</bean>
+	<bean id="daosupport" class="com.cr.dao.DaoSupport">
+	<property name="jtl">
+	<ref bean="jdbcTemplate"/>
+	</property>
+	</bean>
+		<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+		abstract="false" lazy-init="true" autowire="default"
+		dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<!-- 
+	<bean id="myService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+		abstract="false" lazy-init="true" autowire="default"
+		dependency-check="default">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="myServiceImpl" />
+		</property>
+	
+		<property name="transactionAttributes">
+			<props>
+			 <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop> 
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+                 <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>  
+                <prop key="load*">PROPAGATION_REQUIRED,readOnly</prop> 
+                <prop key="save*">PROPAGATION_REQUIRED</prop> 
+                <prop key="add*">PROPAGATION_REQUIRED</prop> 
+                <prop key="update*">PROPAGATION_REQUIRED</prop> 
+                 <prop key="edit*">PROPAGATION_REQUIRED</prop>
+                <prop key="remove*">PROPAGATION_REQUIRED</prop>
+                <prop key="del*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean> -->
+	 <bean id="transactionInterceptor"
+  class="org.springframework.transaction.interceptor.TransactionInterceptor">
+  <property name="transactionManager">
+   <ref bean="transactionManager" />
+  </property>
+  <!-- 配置事务属性 -->
+  <property name="transactionAttributes">
+   <props>
+  	 <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop> 
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+                 <prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>  
+                <prop key="load*">PROPAGATION_REQUIRED,readOnly</prop> 
+                <prop key="save*">PROPAGATION_REQUIRED</prop> 
+                <prop key="add*">PROPAGATION_REQUIRED</prop> 
+                <prop key="update*">PROPAGATION_REQUIRED</prop> 
+                 <prop key="edit*">PROPAGATION_REQUIRED</prop>
+                <prop key="remove*">PROPAGATION_REQUIRED</prop>
+                <prop key="del*">PROPAGATION_REQUIRED</prop>
+   </props>
+  </property>
+ </bean>
+	 
+<bean id="defaultCacheManager"
+  class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+  <property name="configLocation">
+   <value>classpath:ehcache.xml</value>
+  </property>
+ </bean>
+ <!-- 定义ehCache的工厂，并设置所使用的Cache name -->
+ <bean id="ehCache"
+  class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+  <property name="cacheManager">
+   <ref local="defaultCacheManager" />
+  </property>
+  <property name="cacheName">
+   <value>DEFAULT_CACHE</value>
+  </property>
+ </bean>
+ <!-- find/create cache拦截器 -->
+ <bean id="methodCacheInterceptor"
+  class="com.cr.util.MethodCacheInterceptor">
+  <property name="cache">
+   <ref local="ehCache" />
+  </property>
+ </bean>
+ <!-- flush cache拦截器 -->
+ <bean id="methodCacheAfterAdvice"
+  class="com.cr.util.MethodCacheAfterAdvice">
+  <property name="cache">
+   <ref local="ehCache" />
+  </property>
+ </bean>
+ <bean id="methodCachePointCut"
+  class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+  <property name="advice">
+   <ref local="methodCacheInterceptor" />
+  </property>
+  <property name="patterns">
+   <list>
+    <value>.*findCache.*</value>
+    <value>.*sumCache.*</value>
+    <value>.*getCache.*</value>
+     <value>.*loadCache.*</value>
+    <value>.*listCache.*</value>
+   </list>
+  </property>
+ </bean>
+ <bean id="methodCachePointCutAdvice"
+  class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+  <property name="advice">
+   <ref local="methodCacheAfterAdvice" />
+  </property>
+  <property name="patterns">
+   <list>
+    <value>.*addCache.*</value>
+    <value>.*updateCache.*</value>
+       <value>.*saveCache.*</value>
+            <value>.*editCache.*</value>
+             <value>.*removeCache.*</value>
+    <value>.*delCache.*</value>
+   </list>
+  </property>
+ </bean>
+ <!-- 自动代理 -->
+ <bean id="autoproxy"
+  class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+  <!-- 可以是Service或DAO层（最好是针对业务层*Service） -->
+  <property name="beanNames">
+   <list>
+    <value>myService</value>
+   </list>
+  </property>
+  <property name="interceptorNames">
+   <list>
+    <value>methodCachePointCut</value>
+    <value>methodCachePointCutAdvice</value>
+    <value>transactionInterceptor</value>
+   </list>
+  </property>
+ </bean>
+	<bean id="myService" class="com.cr.service.MyServiceImpl"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="TUserdao">
+		<ref bean="TUserDAO"/>
+		</property>
+		 <property name="TRoledao">
+		<ref bean="TRoleDAO"/>
+		</property>
+		 <property name="TJcxxxdao">
+		<ref bean="TJcxxxDAO"/>
+		</property>
+		<property name="zcgjd2dao">
+		<ref bean="Zcgjd2DAO"/>
+		</property>
+		<property name="xlfl2dao">
+		<ref bean="Xlfl2DAO"/>
+		</property>
+		<property name="dao">
+		<ref bean="daosupport"/>
+		</property>
+		 <property name="TZcgjddao">
+		<ref bean="TZcgjdDAO"/>
+		</property>
+		 <property name="TXxxxdao">
+		<ref bean="TXxxxDAO"/>
+		</property>
+		 <property name="TCgsxxdao">
+		<ref bean="TCgsxxDAO"/>
+		</property>
+		 <property name="TDcfldao">
+		<ref bean="TDcflDAO"/>
+		</property>
+		 <property name="TXlfldao">
+		<ref bean="TXlflDAO"/>
+		</property>
+		 <property name="TShlxszdao">
+		<ref bean="TShlxszDAO"/>
+		</property>
+		<property name="TFpdcdao">
+		<ref bean="TFpdcDAO"/>
+		</property>
+		<property name="TXxldao">
+		<ref bean="TXxlDAO"/>
+		</property>
+		<property name="TWzdmdao">
+		<ref bean="TWzdmDAO"/>
+		</property>
+		<property name="TDatadao">
+		<ref bean="TDataDAO"/>
+		</property>
+		<property name="TDataDetaildao">
+		<ref bean="TDataDetailDAO"/>
+		</property>
+			<property name="TSumdao">
+		<ref bean="TSumDAO"/>
+		</property>
+	 </bean>
+	<bean id="filterChainProxy" class="org.acegisecurity.util.FilterChainProxy">
+		<property name="filterInvocationDefinitionSource">
+			<value><![CDATA[
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				PATTERN_TYPE_APACHE_ANT
+				/**=httpSessionContextIntegrationFilter,logoutFilter,authenticationProcessingFilter,securityContextHolderAwareRequestFilter,rememberMeProcessingFilter,anonymousProcessingFilter,exceptionTranslationFilter,filterInvocationInterceptor
+			]]></value>
+		</property>
+	</bean>
+	<bean id="httpSessionContextIntegrationFilter" class="org.acegisecurity.context.HttpSessionContextIntegrationFilter"/>
+	<bean id="logoutFilter" class="org.acegisecurity.ui.logout.LogoutFilter">
+		<constructor-arg value="/index.jsp"/> <!-- URL redirected to after logout -->
+		<constructor-arg>
+			<list>
+				<ref bean="rememberMeServices"/>
+				<bean class="org.acegisecurity.ui.logout.SecurityContextLogoutHandler"/>
+			</list>
+		</constructor-arg>
+		<property name="filterProcessesUrl" value="/j_acegi_logout"></property>
+	</bean>
+	<bean id="authenticationProcessingFilter" class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilter">
+		<property name="authenticationManager" ref="authenticationManager"/>
+		<property name="authenticationFailureUrl" value="/index.jsp?login_error=1"/>
+		<property name="defaultTargetUrl" value="/main.htm"/>
+		<property name="filterProcessesUrl" value="/j_acegi_security_check"/>
+		<property name="rememberMeServices" ref="rememberMeServices"/>
+	</bean>
+	<bean id="securityContextHolderAwareRequestFilter" class="org.acegisecurity.wrapper.SecurityContextHolderAwareRequestFilter"/>
+
+	<bean id="rememberMeProcessingFilter" class="org.acegisecurity.ui.rememberme.RememberMeProcessingFilter">
+		<property name="authenticationManager" ref="authenticationManager"/>
+		<property name="rememberMeServices" ref="rememberMeServices"/>
+	</bean>
+
+	<bean id="anonymousProcessingFilter" class="org.acegisecurity.providers.anonymous.AnonymousProcessingFilter">
+		<property name="key" value="changeThis"/>
+		<property name="userAttribute" value="anonymousUser,ROLE_ANONYMOUS"/>
+	</bean>
+
+	<bean id="exceptionTranslationFilter" class="org.acegisecurity.ui.ExceptionTranslationFilter">
+		<property name="authenticationEntryPoint">
+			<bean class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilterEntryPoint">
+				<property name="loginFormUrl" value="/index.jsp"/>
+				<property name="forceHttps" value="false"/>
+			</bean>
+		</property>
+		<property name="accessDeniedHandler">
+			<bean class="org.acegisecurity.ui.AccessDeniedHandlerImpl">
+				<property name="errorPage" value="/no_privilege.jsp"/>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="filterInvocationInterceptor" class="org.acegisecurity.intercept.web.FilterSecurityInterceptor">
+		<property name="authenticationManager" ref="authenticationManager"/>
+		<property name="accessDecisionManager">
+			<bean class="org.acegisecurity.vote.AffirmativeBased">
+				<property name="allowIfAllAbstainDecisions" value="false"/>
+				<property name="decisionVoters">
+					<list>
+						<bean class="org.acegisecurity.vote.RoleVoter">
+						<property name="rolePrefix" value="PRIV_"></property>
+						</bean>
+						<bean class="org.acegisecurity.vote.AuthenticatedVoter"/>
+					</list>
+				</property>
+			</bean>
+		</property>
+		<property name="objectDefinitionSource">
+			<value><![CDATA[
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				PATTERN_TYPE_APACHE_ANT
+                 /main.htm=PRIV_GUEST,PRIV_HTGL,PRIV_OPERATOR
+                 /jcdj.htm=PRIV_GUEST,PRIV_HTGL,PRIV_OPERATOR
+                 /jczhcx.htm=PRIV_GUEST,PRIV_HTGL
+                  /editpwd.htm=PRIV_GUEST,PRIV_HTGL,PRIV_OPERATOR
+                 /list.htm=PRIV_GUEST,PRIV_HTGL,PRIV_OPERATOR
+                 /*.htm=PRIV_HTGL
+				/**=IS_AUTHENTICATED_ANONYMOUSLY
+			]]></value>
+		</property>
+	</bean>
+
+	<bean id="rememberMeServices" class="org.acegisecurity.ui.rememberme.TokenBasedRememberMeServices">
+		<property name="userDetailsService" ref="userDetailsService"/>
+		<property name="key" value="changeThis"/>
+	</bean>
+
+	<bean id="authenticationManager" class="org.acegisecurity.providers.ProviderManager">
+		<property name="providers">
+			<list>
+				<ref local="daoAuthenticationProvider"/>
+				<bean class="org.acegisecurity.providers.anonymous.AnonymousAuthenticationProvider">
+					<property name="key" value="changeThis"/>
+				</bean>
+				<bean class="org.acegisecurity.providers.rememberme.RememberMeAuthenticationProvider">
+					<property name="key" value="changeThis"/>
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="daoAuthenticationProvider" class="org.acegisecurity.providers.dao.DaoAuthenticationProvider">
+		<property name="userDetailsService" ref="userDetailsService"/>
+		<property name="passwordEncoder">
+		<bean class="org.acegisecurity.providers.encoding.ShaPasswordEncoder"></bean>
+		</property>
+		<property name="saltSource">
+		<bean class="org.acegisecurity.providers.dao.salt.SystemWideSaltSource">
+		<property name="systemWideSalt" value="hejh"></property>
+		</bean>
+		</property>
+	</bean>
+
+	<!-- UserDetailsService is the most commonly frequently Acegi Security interface implemented by end users -->
+	<bean id="userDetailsService" class="org.acegisecurity.userdetails.jdbc.JdbcDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="usersByUsernameQuery">
+		<value>SELECT zh as username,mm as password,1 as status from t_user where zh=?</value>
+		</property>
+		<property name="authoritiesByUsernameQuery">
+		<value>
+select e.zh as username,a.priv_name as priv_name from t_privilege a, role_priv b, t_role c,user_role d, t_user e where
+a.priv_id=b.priv_id and b.role_id=c.role_id and d.role_id=c.role_id and e.zh=d.zh and e.zh=?
+		</value>
+		</property>
+		<!--  
+			<property name="userMap">
+		<value>
+		yu=000,PRIV_HTGL
+		test=test,PRIV_ADMIN
+		</value>
+		</property>
+	
+		<property name="userProperties">
+			<bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+				<property name="location" value="/WEB-INF/users.properties"/>
+			</bean>
+		</property>-->
+	</bean>
+
+	<!-- This bean is optional; it isn't used by any other bean as it only listens and logs -->
+	<bean id="loggerListener" class="org.acegisecurity.event.authentication.LoggerListener"/>
+	
+	<bean id="TJcxxxDAO" class="com.cr.domain.TJcxxxDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"></ref>
+		</property>
+	</bean>
+	
+	<bean id="TZcgjdDAO" class="com.cr.domain.TZcgjdDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TCgsxxDAO" class="com.cr.domain.TCgsxxDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TXxxxDAO" class="com.cr.domain.TXxxxDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TDcflDAO" class="com.cr.domain.TDcflDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TXlflDAO" class="com.cr.domain.TXlflDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TShlxszDAO" class="com.cr.domain.TShlxszDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="Xlfl2DAO" class="com.cr.domain.Xlfl2DAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="Zcgjd2DAO" class="com.cr.domain.Zcgjd2DAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TFpdcDAO" class="com.cr.domain.TFpdcDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TWzdmDAO" class="com.cr.domain.TWzdmDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TXxlDAO" class="com.cr.domain.TXxlDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TDataDAO" class="com.cr.domain.TDataDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TDataDetailDAO" class="com.cr.domain.TDataDetailDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TSumDAO" class="com.cr.domain.TSumDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean></beans>

@@ -1,0 +1,153 @@
+.nseergrid {
+	BORDER-RIGHT: #12d608 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #12d608 0px solid; PADDING-LEFT: 0px; BACKGROUND: white; MARGIN: 0px; OVERFLOW: hidden; BORDER-LEFT: #12d608 1px solid; WIDTH: 500px; PADDING-TOP: 0px;   POSITION: relative; HEIGHT: 300px; moz-user-select: none
+}
+.nseergrid TABLE {
+	TABLE-LAYOUT: fixed; MARGIN: 0px
+}
+.nseergrid TABLE TD {
+	BORDER-RIGHT: #bce089 1px dotted; FONT-SIZE: 12px; OVERFLOW: hidden; CURSOR: default; WORD-BREAK: keep-all; TEXT-INDENT: 2px; BORDER-BOTTOM: #bce089 1px dotted; FONT-FAMILY: verdana; WHITE-SPACE: nowrap; HEIGHT: 21px
+}
+.nseergrid TABLE TD .arrow {
+	FONT-SIZE: 8px; COLOR: #808080
+}
+.nseergrid TABLE .title_div {
+	BORDER-RIGHT: #069de6 1px solid; PADDING-RIGHT: 0px; PADDING-LEFT: 5px; FONT-SIZE: 12px; BACKGROUND-IMAGE: url(../images/white-top-bottom.gif); PADDING-BOTTOM: 0px; BORDER-LEFT: #43befa 1px solid; WIDTH: 900px; COLOR: #000000; PADDING-TOP: 7px; BORDER-BOTTOM: #43befa 1px solid; HEIGHT: 25px
+}
+.nseergrid TABLE .lastdata {
+	BORDER-RIGHT: medium none
+}
+.nseergrid TABLE .column {
+	BORDER-RIGHT: #404040 1px solid; BORDER-TOP: #fff 1px solid; BACKGROUND-IMAGE: url(../images/grid3-hrow-over.gif); BORDER-LEFT: #fff 1px solid; WIDTH: 150px; CURSOR: default; BORDER-BOTTOM: #404040 1px solid
+}
+.nseergrid TABLE .over {
+	BORDER-RIGHT: #404040 1px solid; BORDER-TOP: #fff 1px solid; BACKGROUND-IMAGE: url(../images/grid3-hrow-over.gif); BORDER-LEFT: #fff 1px solid; WIDTH: 120px; CURSOR: default; BORDER-BOTTOM: #404040 1px solid
+}
+.nseergrid TABLE .sortdown {
+	BORDER-RIGHT: #ffffff 1px solid; BORDER-TOP: #404040 1px solid; LEFT: 1px; BACKGROUND-IMAGE: url(../images/grid3-hrow-over.gif); BORDER-LEFT: #404040 1px solid; WIDTH: 120px; CURSOR: default; BORDER-BOTTOM: #ffffff 1px solid; POSITION: relative
+}
+.nseergrid TABLE .dataover {
+	BACKGROUND-IMAGE: url(../images/toolbar.gif)
+}
+.nseergrid TABLE .firstcolumn {
+	BORDER-RIGHT: #404040 1px solid; BORDER-TOP: #fff 1px solid; BACKGROUND: buttonface; BORDER-LEFT: #000000 1px solid; WIDTH: 0px; TEXT-INDENT: 0px; BORDER-BOTTOM: #404040 1px solid; TEXT-ALIGN: center
+}
+.nseergrid TABLE .lastcolumn {
+	BORDER-RIGHT: #404040 1px solid; BORDER-TOP: #fff 1px solid; BACKGROUND-IMAGE: url(../images/grid3-hrow-over.gif); BORDER-LEFT: #fff 1px solid; BORDER-BOTTOM: #404040 1px solid
+}
+.nseergrid TABLE .selectedrow {
+	BACKGROUND-IMAGE: url(../images/win-bg.gif); COLOR: white
+}
+.nseergrid TABLE .selectedrow #DIV {
+	BACKGROUND: highlight; COLOR: white
+}
+.nseergrid TABLE .selectedcell {
+	BORDER-RIGHT: red 2px solid; BORDER-TOP: red 1px solid; BACKGROUND: red; BORDER-LEFT: red 2px solid; BORDER-BOTTOM: red 1px solid
+}
+.nseergrid TABLE .overrow {
+	BACKGROUND: #d6e6f8
+}
+.nseergrid .titlecolumn {
+	Z-INDEX: 2; LEFT: 0px; WIDTH: 100%; POSITION: absolute; TOP: 25px
+}
+.nseergrid .slidecolumn {
+	Z-INDEX: 1; LEFT: 0px; WIDTH: 100%; POSITION: absolute; TOP: 0px; HEIGHT: 25px
+}
+.nseergrid .slidecolumn TD {
+	BORDER-RIGHT: #43befa 1px solid; PADDING-RIGHT: 0px; PADDING-LEFT: 5px; FONT-WEIGHT: bold; BACKGROUND-IMAGE: url(../images/white-top-bottom.gif); PADDING-BOTTOM: 0px; BORDER-LEFT: #fff 1px solid; WIDTH: 100%; TEXT-INDENT: 0px; PADDING-TOP: 5px; BORDER-BOTTOM: #43befa 1px solid; TEXT-ALIGN: left
+}
+.nseergrid .datacolumn {
+	LEFT: 0px; WIDTH: 100%; POSITION: absolute; TOP: 25px
+}
+.nseergrid .zero {
+	BORDER-RIGHT: #000000 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #fff 1px solid; PADDING-LEFT: 0px; FONT-SIZE: 10px; Z-INDEX: 10; BACKGROUND: url(../images/grid3-hrow-over.gif) buttonface; LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #fff 1px solid; WIDTH: 30px; COLOR: #a19f92; PADDING-TOP: 0px; BORDER-BOTTOM: #404040 1px solid; POSITION: absolute; TOP: 0px; HEIGHT: 21px; TEXT-ALIGN: center
+}
+.point_div_t {
+	BACKGROUND-IMAGE: url(../images/arrow-down.gif); WIDTH: 14px; POSITION: absolute; HEIGHT: 15px
+}
+.point_div_b {
+	BACKGROUND-IMAGE: url(../images/col-move-bottom.gif); WIDTH: 10px; BACKGROUND-REPEAT: no-repeat; POSITION: absolute; HEIGHT: 10px
+}
+.drag_div {
+	BORDER-RIGHT: #404040 1px solid; BORDER-TOP: #404040 1px solid; FONT-SIZE: 9pt; BACKGROUND-IMAGE: url(../images/grid3-hrow-over.gif); BORDER-LEFT: #404040 1px solid; WIDTH: 120px; BORDER-BOTTOM: #404040 1px solid; POSITION: absolute; HEIGHT: 21px
+}
+.nseergrid #S_R {
+	BACKGROUND: red; COLOR: #ffffff
+}
+.nseerexcel {
+	BORDER-RIGHT: #12d608 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #12d608 0px solid; PADDING-LEFT: 0px; BACKGROUND: white; MARGIN: 0px; OVERFLOW: hidden; BORDER-LEFT: #12d608 1px solid; WIDTH: 500px; PADDING-TOP: 0px; BORDER-BOTTOM: #12d608 1px solid; POSITION: relative; HEIGHT: 400px; moz-user-select: none
+}
+.nseerexcel TABLE {
+	TABLE-LAYOUT: fixed; MARGIN: 0px
+}
+.nseerexcel TABLE TD {
+	BORDER-RIGHT: #bce089 1px dotted; FONT-SIZE: 12px; OVERFLOW: hidden; CURSOR: default; WORD-BREAK: keep-all; TEXT-INDENT: 2px; BORDER-BOTTOM: #bce089 1px dotted; FONT-FAMILY: verdana; WHITE-SPACE: nowrap; HEIGHT: 21px
+}
+.nseerexcel TABLE TD .arrow {
+	FONT-SIZE: 8px; COLOR: #808080
+}
+.nseerexcel TABLE .title_div {
+	BORDER-RIGHT: #069de6 1px solid; PADDING-RIGHT: 0px; PADDING-LEFT: 5px; FONT-SIZE: 12px; BACKGROUND-IMAGE: url(../images/white-top-bottom.gif); PADDING-BOTTOM: 0px; BORDER-LEFT: #43befa 1px solid; WIDTH: 900px; COLOR: #000000; PADDING-TOP: 7px; BORDER-BOTTOM: #43befa 1px solid; HEIGHT: 25px
+}
+.nseerexcel TABLE .lastdata {
+	BORDER-RIGHT: medium none
+}
+.nseerexcel TABLE .column {
+	BORDER-RIGHT: #404040 1px solid; BORDER-TOP: #fff 1px solid; BACKGROUND-IMAGE: url(../images/grid3-hrow-over.gif); BORDER-LEFT: #fff 1px solid; WIDTH: 150px; CURSOR: default; BORDER-BOTTOM: #404040 1px solid
+}
+.nseerexcel TABLE .over {
+	BORDER-RIGHT: #404040 1px solid; BORDER-TOP: #fff 1px solid; BACKGROUND-IMAGE: url(../images/grid3-hrow-over.gif); BORDER-LEFT: #fff 1px solid; WIDTH: 120px; CURSOR: default; BORDER-BOTTOM: #404040 1px solid
+}
+.nseerexcel TABLE .sortdown {
+	BORDER-RIGHT: #ffffff 1px solid; BORDER-TOP: #404040 1px solid; LEFT: 1px; BACKGROUND-IMAGE: url(../images/grid3-hrow-over.gif); BORDER-LEFT: #404040 1px solid; WIDTH: 120px; CURSOR: default; BORDER-BOTTOM: #ffffff 1px solid; POSITION: relative
+}
+.nseerexcel TABLE .dataover {
+	BACKGROUND-IMAGE: url(../images/toolbar.gif)
+}
+.nseerexcel TABLE .firstcolumn {
+	BORDER-RIGHT: #404040 1px solid; BORDER-TOP: #fff 1px solid; BACKGROUND: buttonface; BORDER-LEFT: #000000 1px solid; WIDTH: 0px; TEXT-INDENT: 0px; BORDER-BOTTOM: #404040 1px solid; TEXT-ALIGN: center
+}
+.nseerexcel TABLE .lastcolumn {
+	BORDER-RIGHT: #404040 1px solid; BORDER-TOP: #fff 1px solid; BACKGROUND-IMAGE: url(../images/grid3-hrow-over.gif); BORDER-LEFT: #fff 1px solid; BORDER-BOTTOM: #404040 1px solid
+}
+.nseerexcel TABLE .selectedrow {
+	BACKGROUND-IMAGE: url(../images/win-bg.gif); COLOR: white
+}
+.nseerexcel TABLE .selectedrow #DIV {
+	BACKGROUND: highlight; COLOR: white
+}
+.nseerexcel TABLE .selectedcell {
+	BORDER-RIGHT: red 2px solid; BORDER-TOP: red 2px solid; BORDER-LEFT: red 2px solid; BORDER-BOTTOM: red 2px solid
+}
+.nseerexcel TABLE .overrow {
+	BACKGROUND: #d6e6f8
+}
+.nseerexcel .titlecolumn {
+	Z-INDEX: 2; LEFT: 0px; WIDTH: 100%; POSITION: absolute; TOP: 25px
+}
+.nseerexcel .slidecolumn {
+	Z-INDEX: 1; LEFT: 0px; WIDTH: 100%; POSITION: absolute; TOP: 0px; HEIGHT: 25px
+}
+.nseerexcel .slidecolumn TD {
+	BORDER-RIGHT: #43befa 1px solid; PADDING-RIGHT: 0px; PADDING-LEFT: 5px; FONT-WEIGHT: bold; BACKGROUND-IMAGE: url(../images/white-top-bottom.gif); PADDING-BOTTOM: 0px; BORDER-LEFT: #fff 1px solid; WIDTH: 100%; TEXT-INDENT: 0px; PADDING-TOP: 5px; BORDER-BOTTOM: #43befa 1px solid; TEXT-ALIGN: left
+}
+.nseerexcel .datacolumn {
+	LEFT: 0px; WIDTH: 100%; POSITION: absolute; TOP: 25px
+}
+.nseerexcel .zero {
+	BORDER-RIGHT: #000000 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #fff 1px solid; PADDING-LEFT: 0px; FONT-SIZE: 10px; Z-INDEX: 10; BACKGROUND: url(../images/grid3-hrow-over.gif) buttonface; LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #fff 1px solid; WIDTH: 30px; COLOR: #a19f92; PADDING-TOP: 0px; BORDER-BOTTOM: #404040 1px solid; POSITION: absolute; TOP: 0px; HEIGHT: 21px; TEXT-ALIGN: center
+}
+.point_div_t {
+	BACKGROUND-IMAGE: url(../images/arrow-down.gif); WIDTH: 14px; POSITION: absolute; HEIGHT: 15px
+}
+.point_div_b {
+	BACKGROUND-IMAGE: url(../images/col-move-bottom.gif); WIDTH: 10px; BACKGROUND-REPEAT: no-repeat; POSITION: absolute; HEIGHT: 10px
+}
+.drag_div {
+	BORDER-RIGHT: #404040 1px solid; BORDER-TOP: #404040 1px solid; FONT-SIZE: 9pt; BACKGROUND-IMAGE: url(../images/grid3-hrow-over.gif); BORDER-LEFT: #404040 1px solid; WIDTH: 120px; BORDER-BOTTOM: #404040 1px solid; POSITION: absolute; HEIGHT: 21px
+}
+.nseerexcel #S_R {
+	BACKGROUND: red; COLOR: #ffffff
+}
+.drag_img {
+	BACKGROUND-IMAGE: url(../images/drop-yes.gif); WIDTH: 16px; HEIGHT: 15px
+}

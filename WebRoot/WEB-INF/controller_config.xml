@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd" >
+<beans>
+<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<property name="contentType" value="utf-8"></property>
+<property name="viewClass">
+<value>org.springframework.web.servlet.view.JstlView</value>
+</property>
+<property name="prefix">
+<value>/WEB-INF/jsp/</value>
+</property>
+<property name="suffix">
+<value>.jsp</value>
+</property>
+</bean>
+
+<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+<property name="interceptors" ref="openSessionInViewInterceptor"/> 
+ 
+<property name="mappings">
+<props>
+
+<prop key="/main.htm">forwardcontroller</prop>
+<prop key="/pwdsuccess.htm">forwardcontroller</prop>
+<prop key="/jcdj.htm">forwardcontroller</prop>
+<prop key="/jcdj1.htm">forwardcontroller</prop>
+<prop key="/ccdj.htm">forwardcontroller</prop>
+<prop key="/addjcdj.htm">addJcdjController</prop>
+<prop key="/editPwd.htm">editPwdController</prop>
+<prop key="/list.htm">listController</prop>
+<prop key="/editjcdj.htm">editJcdjController</prop>
+<prop key="/addgjd.htm">addGjdController</prop>
+<prop key="/editgjd.htm">editGjdController</prop>
+<prop key="/addxx.htm">addXxController</prop>
+<prop key="/editxx.htm">editXxController</prop>
+<prop key="/addcgs.htm">addCgsController</prop>
+<prop key="/editcgs.htm">editCgsController</prop>
+<prop key="/adddcfl.htm">addDcflController</prop>
+<prop key="/editdcfl.htm">editDcflController</prop>
+<prop key="/addxlfl.htm">addXlflController</prop>
+<prop key="/editxlfl.htm">editXlflController</prop>
+<prop key="/printgjd.htm">forwardcontroller</prop>
+<prop key="/addyh.htm">addUserController</prop>
+<prop key="/edityh.htm">editUserController</prop>
+<prop key="/addrole.htm">addRoleController</prop>
+<prop key="/editrole.htm">editRoleController</prop>
+<prop key="/plxlqr.htm">forwardcontroller</prop>
+<prop key="/pltdh.htm">forwardcontroller</prop>
+<prop key="/plbz.htm">forwardcontroller</prop>
+<prop key="/plwg.htm">forwardcontroller</prop>
+<prop key="/pljz.htm">forwardcontroller</prop>
+<prop key="/bbcx.htm">forwardcontroller</prop>
+<prop key="/choosekey.htm">forwardcontroller</prop>
+<prop key="/addshlx.htm">addShlxController</prop>
+<prop key="/editshlx.htm">editShlxController</prop>
+<prop key="/pl.htm">forwardcontroller</prop>
+<prop key="/plsel.htm">forwardcontroller</prop>
+<prop key="/pldc.htm">forwardcontroller</prop>
+<prop key="/combos.htm">forwardcontroller</prop>
+<prop key="/addxlfl2.htm">addXlfl2Controller</prop>
+<prop key="/editxlfl2.htm">editXlfl2Controller</prop>
+<prop key="/editjcdj2.htm">editJcdj2Controller</prop>
+<prop key="/addgjd2.htm">addGjd2Controller</prop>
+<prop key="/editgjd2.htm">editGjd2Controller</prop>
+<prop key="/addxxl.htm">addXxlController</prop>
+<prop key="/editxxl.htm">editXxlController</prop>
+<prop key="/addwzdm.htm">addWzdmController</prop>
+<prop key="/editwzdm.htm">editWzdmController</prop>
+<prop key="/addjc.htm">addJcController</prop>
+<prop key="/addjc2.htm">addJc2Controller</prop>
+<prop key="/zhcx.htm">forwardcontroller</prop>
+<prop key="/xlflzhcx.htm">forwardcontroller</prop>
+<prop key="/jczhcx.htm">forwardcontroller</prop>
+<prop key="/success.htm">forwardcontroller</prop>
+<prop key="/data.htm">forwardcontroller</prop>
+</props>
+</property>
+</bean>
+<bean id="openSessionInViewInterceptor"
+          class="org.springframework.orm.hibernate3.support.OpenSessionInViewInterceptor">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+	<bean id="paramMethodResolver"
+		class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="paramName">
+		<value>action</value>
+		</property>
+	</bean>
+	<bean id="forwardcontroller" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"></bean>
+<bean id="listController" class="com.cr.controller.ListController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="methodNameResolver">
+		<ref bean="paramMethodResolver"/>
+		</property>
+	</bean>
+
+	<bean id="editPwdController"
+		class="com.cr.controller.EditPwdController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>editPwd</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/list.htm?action=pwdsuccess</value>
+		</property>
+	</bean>
+	
+	<bean id="addJcdjController"
+		class="com.cr.controller.AddJcdjController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>addjcdj</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/addjcdj.htm</value>
+		</property>
+	</bean>
+	
+	<bean id="editJcdjController"
+		class="com.cr.controller.EditJcdjController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>editjcdj</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/list.htm?action=editjcsuccess</value>
+		</property>
+	</bean>
+	
+	<bean id="addGjdController"
+		class="com.cr.controller.AddGjdController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>addgjd</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/addgjd.htm</value>
+		</property>
+	</bean>
+	
+	<bean id="editGjdController"
+		class="com.cr.controller.EditGjdController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>editgjd</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/list.htm?action=editgjd</value>
+		</property>
+	</bean>
+	
+	<bean id="addXxController" class="com.cr.controller.AddXxController"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>addxx</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/addxx.htm</value>
+		</property>
+	</bean>
+	
+	<bean id="editXxController"
+		class="com.cr.controller.EditXxController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>editxx</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/list.htm?action=editxx</value>
+		</property>
+	</bean>
+	
+	<bean id="addCgsController"
+		class="com.cr.controller.AddCgsController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>addcgs</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/addcgs.htm</value>
+		</property>
+	</bean>
+	
+	<bean id="editCgsController"
+		class="com.cr.controller.EditCgsController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>editcgs</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/list.htm?action=editcgs</value>
+		</property>
+	</bean>
+	
+	<bean id="addDcflController"
+		class="com.cr.controller.AddDcflController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+			<property name="formView">
+			<value>adddcfl</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/adddcfl.htm</value>
+		</property>
+	</bean>
+	
+	<bean id="editDcflController"
+		class="com.cr.controller.EditDcflController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>editdcfl</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/list.htm?action=editdcfl</value>
+		</property>
+	</bean>
+	
+	<bean id="addXlflController"
+		class="com.cr.controller.AddXlflController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+			<property name="formView">
+			<value>addxlfl</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/addxlfl.htm</value>
+		</property>
+	</bean>
+	
+	<bean id="editXlflController"
+		class="com.cr.controller.EditXlflController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>editxlfl</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/list.htm?action=editxlfl</value>
+		</property>
+	</bean>
+	
+	
+	
+	<bean id="addUserController"
+		class="com.cr.controller.AddYhController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+			<property name="formView">
+			<value>addyh</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/addyh.htm</value>
+		</property>
+	</bean>
+	
+	<bean id="editUserController"
+		class="com.cr.controller.EditYhController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>edityh</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/list.htm?action=edityh</value>
+		</property>
+	</bean>
+	
+	<bean id="addRoleController"
+		class="com.cr.controller.AddJsController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+			<property name="formView">
+			<value>addrole</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/addrole.htm</value>
+		</property>
+	</bean>
+	
+	<bean id="editRoleController"
+		class="com.cr.controller.EditRoleController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>editrole</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/list.htm?action=editrole</value>
+		</property>
+	</bean>
+	
+	<bean id="addShlxController"
+		class="com.cr.controller.AddShlxController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>addshlx</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/addshlx.htm</value>
+		</property>
+	</bean>
+	
+	<bean id="editShlxController"
+		class="com.cr.controller.EditShlxController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>editshlx</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/list.htm?action=editshlx</value>
+		</property>
+	</bean>
+	
+	<bean id="addXlfl2Controller"
+		class="com.cr.controller.AddXlfl2Controller" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>addxlfl2</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/addxlfl2.htm</value>
+		</property>
+	</bean>
+	
+	<bean id="editXlfl2Controller"
+		class="com.cr.controller.EditXlfl2Controller" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>editxlfl2</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/list.htm?action=editxlfl2</value>
+		</property>
+	</bean>
+	
+	<bean id="editJcdj2Controller"
+		class="com.cr.controller.EditJcdj2Controller" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>editjcdj2</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/list.htm?action=editjc2success</value>
+		</property>
+	</bean>
+	
+	
+	<bean id="addGjd2Controller"
+		class="com.cr.controller.addGjd2Controller" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>addgjd2</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/addgjd2.htm</value>
+		</property>
+	</bean>
+	
+	<bean id="editGjd2Controller"
+		class="com.cr.controller.EditGjd2Controller" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>editgjd2</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/list.htm?action=editgjd2</value>
+		</property>
+	</bean>
+	
+	
+	<bean id="addXxlController"
+		class="com.cr.controller.AddXxlController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>addxxl</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/addxxl.htm</value>
+		</property>
+	</bean>
+	
+	<bean id="editXxlController"
+		class="com.cr.controller.EditXxlController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>editxxl</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/list.htm?action=editxxl</value>
+		</property>
+	</bean>
+	
+	<bean id="addWzdmController"
+		class="com.cr.controller.AddWzdmController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>addwzdm</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/addwzdm.htm</value>
+		</property>
+	</bean>
+	
+	<bean id="editWzdmController"
+		class="com.cr.controller.EditWzdmController" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>editwzdm</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/list.htm?action=editwzdm</value>
+		</property>
+	</bean>
+	
+	<bean id="addJcController" class="com.cr.controller.AddJcController"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+			<property name="formView">
+			<value>addjc</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/addjc.htm?flag=success</value>
+		</property>
+	</bean>
+	
+	
+	<bean id="addJc2Controller"
+		class="com.cr.controller.AddJc2Controller" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myService">
+			<ref bean="myService" />
+		</property>
+		<property name="formView">
+			<value>addjc2</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/addjc2.htm?flag=success</value>
+		</property>
+	</bean>
+	</beans>

@@ -1,0 +1,225 @@
+/*==============================================================*/
+/* DBMS name:      MySQL 5.0                                    */
+/* Created on:     2008-9-18 10:10:43                           */
+/*==============================================================*/
+
+
+drop table if exists ROLE_PRIV;
+
+drop table if exists T_CGSXX;
+
+drop table if exists T_DCFL;
+
+drop table if exists T_JCXXX;
+
+drop table if exists T_PRIVILEGE;
+
+drop table if exists T_ROLE;
+
+drop table if exists T_SHXX;
+
+drop table if exists T_USER;
+
+drop table if exists T_XLFL;
+
+drop table if exists T_XXXX;
+
+drop table if exists T_ZCGJD;
+
+drop table if exists USER_ROLE;
+
+
+
+/*==============================================================*/
+/* Table: T_CGSXX                                               */
+/*==============================================================*/
+create table T_CGSXX
+(
+   GSDM                 varchar(50) not null,
+   GSMC                 varchar(50),
+   YWMC                 varchar(50),
+   LXDH                 varchar(50),
+   CZ                   varchar(50),
+   FZR                  varchar(50),
+   EMAIL            varchar(50),
+   primary key (GSDM)
+);
+
+/*==============================================================*/
+/* Table: T_DCFL                                                */
+/*==============================================================*/
+create table T_DCFL
+(
+   ID                   bigint not null AUTO_INCREMENT,
+   GSDM                 varchar(50),
+   CC                   varchar(50),
+   XX                   varchar(50),
+   QDF                  decimal(19,4),
+   TYF                  decimal(19,4),
+   DCFL                 decimal(19,4),
+   BGDCF                decimal(19,4),
+   primary key (ID)
+);
+
+/*==============================================================*/
+/* Table: T_JCXXX                                               */
+/*==============================================================*/
+create table T_JCXXX
+(
+   RCBH                 bigint not null,
+   XH                   varchar(50),
+   XX                   varchar(50),
+   ZZRQ                 varchar(50),
+   CC                   varchar(50),
+   JCZT                 varchar(50),
+   JCTC                 varchar(50),
+   LXD                  varchar(50),
+   JCWZ                 varchar(50),
+   EIRLSH               varchar(50),
+   JCRQ                 datetime,
+   CGS                  varchar(50),
+   SFBF                 varchar(50),
+   LCZT                 varchar(50),
+   CCTC                 varchar(50),
+   QX                   varchar(50),
+   TDH                  varchar(50),
+   MTWTBH               varchar(50),
+   ZGD                  varchar(50),
+   CCRQ                 datetime,
+   TYF                  decimal(19,4),
+   DCF                  decimal(19,4),
+   QDF                  decimal(19,4),
+   ZDBH                 varchar(50),
+   ZYGR                 varchar(50),
+   WGRQ                 datetime,
+   QRRQ                 datetime,
+   LLR                  varchar(50),
+   LLRQ                 datetime,
+   primary key (RCBH)
+);
+
+/*==============================================================*/
+/* Table: T_PRIVILEGE                                           */
+/*==============================================================*/
+create table T_PRIVILEGE
+(
+   PRIV_ID              bigint not null AUTO_INCREMENT,
+   PRIV_NAME            varchar(50),
+   PRIV_TITLE           varchar(50),
+   PRIV_DETAIL          varchar(500),
+   primary key (PRIV_ID)
+);
+
+/*==============================================================*/
+/* Table: T_ROLE                                                */
+/*==============================================================*/
+create table T_ROLE
+(
+   ROLE_ID              bigint not null AUTO_INCREMENT,
+   R_NAME               varchar(50),
+   R_CAPTION            varchar(50),
+   R_DESCRIPTION        varchar(500),
+   primary key (ROLE_ID)
+);
+
+/*==============================================================*/
+/* Table: T_SHXX                                                */
+/*==============================================================*/
+create table T_SHXX
+(
+   SHDM                 varchar(50) not null,
+   SHMX                 varchar(50),
+   primary key (SHDM)
+);
+
+/*==============================================================*/
+/* Table: T_USER                                                */
+/*==============================================================*/
+create table T_USER
+(
+   ZH                   varchar(50) not null,
+   XM                   varchar(50),
+   MM                   varchar(50),
+   primary key (ZH)
+);
+
+/*==============================================================*/
+/* Table: T_XLFL                                                */
+/*==============================================================*/
+create table T_XLFL
+(
+   ID                   bigint not null AUTO_INCREMENT,
+   GSDM                 varchar(50),
+   SHDM                 varchar(50),
+   SHMX                 varchar(500),
+   XX                   varchar(50),
+   CC                   varchar(50),
+   GSFL                 decimal(19,4),
+   CLFL                 decimal(19,4),
+   primary key (ID)
+);
+
+/*==============================================================*/
+/* Table: T_XXXX                                                */
+/*==============================================================*/
+create table T_XXXX
+(
+   XXDM                 varchar(50) not null,
+   XXMC                 varchar(50),
+   XXMX                 varchar(500),
+   primary key (XXDM)
+);
+
+/*==============================================================*/
+/* Table: T_ZCGJD                                               */
+/*==============================================================*/
+create table T_ZCGJD
+(
+   ID                   bigint not null AUTO_INCREMENT,
+   ZDBH                 varchar(50),
+   SHDM                 varchar(50),
+   SHMX                 varchar(500),
+   XS                   decimal(19,4),
+   GSF                  decimal(19,4),
+   CLF                  decimal(19,4),
+   HJ                   decimal(19,4),
+   SFXL                 varchar(50),
+   primary key (ID)
+);
+
+/*==============================================================*/
+/* Table: USER_ROLE                                             */
+/*==============================================================*/
+create table USER_ROLE
+(
+   ZH                   varchar(50) not null,
+   ROLE_ID              bigint not null,
+   primary key (ZH, ROLE_ID)
+);
+/*==============================================================*/
+/* Table: ROLE_PRIV                                             */
+/*==============================================================*/
+create table ROLE_PRIV
+(
+   ROLE_ID              bigint not null,
+   PRIV_ID              bigint not null,
+   primary key (ROLE_ID, PRIV_ID)
+);
+alter table ROLE_PRIV add constraint FK_Reference_3 foreign key (ROLE_ID)
+      references T_ROLE (ROLE_ID) on delete cascade on update restrict;
+
+alter table ROLE_PRIV add constraint FK_Reference_4 foreign key (PRIV_ID)
+      references T_PRIVILEGE (PRIV_ID) on delete cascade on update restrict;
+
+alter table T_DCFL add constraint FK_Reference_5 foreign key (GSDM)
+      references T_CGSXX (GSDM) on delete cascade on update restrict;
+
+alter table T_XLFL add constraint FK_Reference_6 foreign key (GSDM)
+      references T_CGSXX (GSDM) on delete cascade on update restrict;
+
+alter table USER_ROLE add constraint FK_Reference_1 foreign key (ZH)
+      references T_USER (ZH) on delete cascade on update restrict;
+
+alter table USER_ROLE add constraint FK_Reference_2 foreign key (ROLE_ID)
+      references T_ROLE (ROLE_ID) on delete cascade on update restrict;
+

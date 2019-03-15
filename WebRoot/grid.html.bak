@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+ <head>
+  <title> New Document </title>
+    <link rel="stylesheet" type="text/css" href="ext/resources/css/ext-all.css" /> 
+    <script type="text/javascript" src="ext/adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="ext/ext-all.js"></script>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+
+ <body>
+    <script>
+    var grid;
+    Ext.onReady(function(){ 
+        //定义数据二维数组
+        var data=[ 
+                    ['1', '列2内容1','列3内容1'],
+                    ['2', '列2内容2','列3内容2'], 
+                    ['3', '列2内容3','列3内容3'],
+                    ['4', '列2内容4','列3内容4'], 
+                     ['5', '列2内容1','列3内容1'],
+                    ['6', '列2内容2','列3内容2'], 
+                    ['7', '列2内容3','列3内容3'],
+                    ['8', '列2内容4','列3内容4'], 
+                     ['列1内容1', '列2内容1','列3内容1'],
+                    ['列1内容2', '列2内容2','列3内容2'], 
+                    ['列1内容3', '列2内容3','列3内容3'],
+                    ['列1内容4', '列2内容4','列3内容4'], 
+                     ['列1内容1', '列2内容1','列3内容1'],
+                    ['列1内容2', '列2内容2','列3内容2'], 
+                    ['列1内容3', '列2内容3','列3内容3'],
+                    ['列1内容4', '列2内容4','列3内容4']
+                 ];
+        
+        //自定义列
+        function check(value)
+        {
+           if (value=='列1内容2')
+           {
+               return '<span style="color:red;font-weight:bold;">自定义列</span>';
+           } 
+           else
+           {
+               return value;
+           }
+        }
+        
+        //整理数据定义3列的索引为con1,con2,con3
+  
+        
+        //定义勾选框，不需要可不必定义
+        var sm = new Ext.grid.CheckboxSelectionModel();
+       var record_start = 0;
+        
+        //定义列
+        var colM=new Ext.grid.ColumnModel([
+            new Ext.grid.RowNumberer(),//增加自动编号，不需要可不必定义
+           
+            sm,//勾选框，不需要可不必定义
+            
+            {header:'列1',dataIndex:'con1',width:170,sortable:true,renderer:check},// 生成列，sortable为列排序，不需要设置为false，默认false，renderer为该列增加自定义函数
+            {header:'列2',dataIndex:'con2',width:170,sortable:true},
+            {header:'列3',dataIndex:'con3',width:170}
+        ]);
+        var ds = new Ext.data.Store({
+    proxy: new Ext.data.MemoryProxy(data),
+    reader: new Ext.data.ArrayReader({}, [
+        {name: 'con1'},
+        {name: 'con2'},
+        {name: 'con3'}
+    ])
+});
+ds.setDefaultSort('con1', 'desc');
+        
+        //生成表格
+        grid = new Ext.grid.GridPanel({
+        
+            el:'show',
+            title:"我的表格",
+            height:200,
+            width:600,
+             loadMask: true,
+             trackMouseOver:false, 
+			
+           ds: ds,
+            cm:colM,
+            sm: sm,
+   
+             bbar: new Ext.PagingToolbar({
+        pageSize:10,
+        store: ds,
+        displayInfo: true,
+        displayMsg: '显示第 {0} 条到 {1} 条记录，一共 {2} 条',
+        emptyMsg: "没有记录"
+       
+        
+    })
+            
+        }); 
+		  ds.load({params:{start:0,limit:5}}); 
+        grid.render(); 
+      
+
+    });
+    function delBook() {   
+        var c = grid.selModel.selections.keys;   
+        if (c.length > 0) {   
+            Ext.MessageBox.confirm('警告', '确认要删除所选记录?', doBook);   
+        } else {   
+            Ext.MessageBox.alert('提示', '最少需要选择一条记录!');   
+        }   
+    }   
+    function doBook(btn) {   
+        if (btn == 'yes') {   
+            var selectedRows = grid.selModel.selections.items;   
+            var jsonData = '';   
+ 
+            for (var i = 0; i < selectedRows.length; i++) {   
+                var row = selectedRows[i];   
+                alert(row.data['con1']);
+                if (i == 0) {   
+                    jsonData = jsonData + row.data['bookID'];   
+                } else {   
+                    jsonData = jsonData + ',' + row.data['bookID'];   
+                }   
+            }   
+            Ext.MessageBox.show({   
+                msg : '正在请求数据, 请稍侯',   
+                progressText : '正在请求数据',   
+                width : 300,   
+                wait : true,   
+                waitConfig : {   
+                    interval : 200  
+                }   
+            });   
+            Ext.Ajax.request({   
+                url : '/deleteBook/',   
+                method : 'POST',   
+                params : {   
+                    bookIDs : jsonData   
+                },   
+                callback : function(options, success, response) {   
+                    if (success) {   
+                        Ext.MessageBox.hide();   
+                        Ext.MessageBox.alert("消息", '删除成功');   
+                    } else {   
+                        Ext.MessageBox.hide();   
+                        Ext.MessageBox.alert("失败，请重试", response.responseText);   
+                    }   
+                },   
+                failure : function(response, options) {   
+                    Ext.MessageBox.hide();   
+                    ReturnValue = Ext.MessageBox.alert("警告", "出现异常错误！请联系管理员！");   
+                },   
+                success : function(response, options) {   
+                    Ext.MessageBox.hide();   
+                    grid.getStore().reload();   
+                }   
+            })   
+  
+        }   
+    }   
+    
+    </script>
+    <div id="show"></div>
+<input type="button" value="tj" onclick="delBook()">
+ </body>
+ </html>

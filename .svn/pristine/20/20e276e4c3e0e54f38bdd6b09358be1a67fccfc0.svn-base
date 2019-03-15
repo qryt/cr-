@@ -1,0 +1,185 @@
+body{
+margin:0px;
+font-size:12px;
+overflow:hidden;
+}
+.datagrid_headerstyle_normal
+{
+    background-image:url(../images/bg_msn.gif);
+}
+.datagrid_footerstyle_normal
+{
+    background-image:url(../images/bg_msn.gif);
+}
+.menu-icon { 
+         background-image: url( ../images/fam/user_female.png) !important;         
+ } 
+.setting-icon { 
+         background-image: url( ../images/fam/folder_wrench.png) !important;         
+ } 
+ .base-icon { 
+         background-image: url( ../images/fam/book.png) !important;         
+ } 
+ .run-icon { 
+         background-image: url( ../images/fam/application_go.png) !important;         
+ }
+  .buy-icon { 
+         background-image: url( ../images/fam/coins.png) !important;         
+ }
+   .program-icon { 
+         background-image: url( ../images/fam/box.png) !important;         
+ }
+ .other-icon { 
+         background-image: url( ../images/fam/page_attach.png) !important;         
+ }
+  .ac-icon { 
+         background-image: url( ../images/fam/user_comment.png) !important;         
+ } 
+ .report-icon { 
+         background-image: url( ../images/fam/chart_curve.png) !important;         
+ } 
+.header{ background-color: #9cbaef;color:#10418c; padding-top: 7px; padding-bottom: 0px; height: 21px !important; height: 30px; }
+.mainborder { clear: both; height: 8px; font-size: 0px; line-height: 0px; padding: 0px; background-color: #154BA0; }
+.new_tabs {
+     background-image:url( ../images/email_close2.gif ) !important;
+    background-position:left top; !important;
+    }
+.add_tabs {
+     background-image:url( ../images/notify.gif ) !important;
+    background-position:left top; !important;
+    }
+.rec_tabs {
+     background-image:url( ../images/msg_fwd.gif ) !important;
+    background-position:left top; !important;
+    }
+ .send_tabs {
+     background-image:url( ../images/msg_back.gif ) !important;
+    background-position:left top; !important;
+    }
+td{
+	font-size:12px;
+	
+	}
+.text{
+	border: 1px #7b9ebd solid;
+	width:110px;
+	text-transform:uppercase;
+	}
+	.text_color{
+	border: 1px #7b9ebd solid;
+	}
+
+.text_read{
+	width:110px;
+	border:none;
+	readonly:expression(this.readOnly=true);
+	}
+.ico{
+border:0px;
+
+}
+.st {FONT-SIZE: 14px; FONT-FAMILY: webdings;color:#154BA0}
+.STYLE1 {color: #FF0000}
+.STYLE3 {font-size: 14px}
+.sty2{
+background: #FFEEDD;
+
+border: 1px solid #D21033;
+}
+.sty1{
+background: #FFFFFF;
+ 
+}
+td{
+font-size:12px;
+}
+a:link { text-decoration: none;color: #000000}
+　　 a:active { text-decoration:blink}
+　　 a:hover { text-decoration:underline;color: red} 
+　　 a:visited { text-decoration: none;color: #000000}
+.btn_2k3 {
+	
+ height:24px;width:80px;BORDER-RIGHT: #002D96 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #002D96 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#FFFFFF, EndColorStr=#9DBCEA); BORDER-LEFT: #002D96 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #002D96 1px solid
+}
+.title{
+background-color:#d9e7f8;
+padding:3px;
+}
+.thead{
+	background-color:#00309c;
+color:#ffffff;
+font-weight:bold;
+height:28px;
+overflow:hidden; 
+white-space: nowrap; 
+text-align:center;
+	}
+.thead1{
+	background-color:#00309c;
+color:#ffffff;
+ 
+height:28px;
+overflow:hidden; 
+white-space: nowrap; 
+text-align:center;
+	}
+.tbody{
+color:#000000;
+background-color:#ffffff;
+height:25px;
+text-align:center;
+text-overflow:ellipsis; 
+overflow:hidden; 
+white-space: nowrap; 
+padding:2px
+
+}
+.tbody1{
+	background-color:#ffffff;
+	}
+.sel{
+color:red;
+background-color:#90ee90;
+
+}
+.menubar {
+ border-bottom: 1px solid #AACCF6;
+ color: #222222;
+ cursor: pointer;
+ display: block;
+ height: 20px;
+ width: 50px;
+ line-height: 17px;
+ outline-color: -moz-use-text-color;
+ outline-style: none;
+ outline-width: 0;
+ padding: 3px;
+ text-align: center;
+ text-decoration: none;
+ white-space: nowrap;
+}
+.datagrid_itemstyle_normal
+{
+	color:#000000;
+	background-color: #FFFFFF;
+}
+.datagrid_itemstyle_over
+{
+	color:#ffffff;
+	background-color: #8994CC;
+}
+.datagrid_alter_itemstyle_normal
+{
+	color:#000000;
+	background-color: #F8FAFD;
+}
+.datagrid_alter_itemstyle_over
+{
+	color:#ffffff;
+	background-color: #8994CC;
+}
+.menubar:hover {     //鼠标悬停上时触发
+ background: #EBF3FD url(../item-over.gif) repeat-x scroll left bottom;
+ text-decoration: none;
+}
+

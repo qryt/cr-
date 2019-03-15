@@ -1,0 +1,45 @@
+Ext.BLANK_IMAGE_URL = '../ext/resources/images/default/s.gif';
+Ext.onReady(function() {
+    Ext.QuickTips.init();
+    Ext.form.Field.prototype.msgTarget = 'side';
+    var win = new Ext.Window({
+        width:500
+        ,id:'winid'
+        ,height:300
+        ,layout:'fit'
+        ,border:false
+        ,closable:false
+        ,title:'Ext.ux.DateTime Example'
+        ,items:[{
+            xtype:'form'
+            ,frame:true
+            ,labelWidth:100
+            ,id:'form'
+            ,url:'.'
+            ,items:[{
+                xtype:'xdatetime'
+                ,id:'dtf'
+                ,fieldLabel:'Date & Time'
+//                ,width:360
+                ,anchor:'-18'
+                ,timeFormat:'H:i:s'
+                ,timeConfig: {
+                    altFormats:'H:i:s'
+                    ,allowBlank:true    
+                }
+                ,dateFormat:'d.n.Y'
+                ,dateConfig: {
+                    altFormats:'Y-m-d|Y-n-d'
+                    ,allowBlank:true    
+                }
+            }]
+        }]
+        ,buttons:[{
+            text:'Submit'
+            ,handler:function() {
+                Ext.getCmp('form').getForm().submit();
+            }
+        }]
+    });
+    win.show();
+});

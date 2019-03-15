@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="cr永嘉"
+  id="myeclipse.1221703978812"
+  context-root="/cr"
+  j2ee-spec="5.0"
+  archive="cr永嘉.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
